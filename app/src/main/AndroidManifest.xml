@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.insighters.ash.note_maker">
+    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:name="com.android.alarm.permission.SET_ALARM"/>
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".NoteMaker.welcome_screen">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".NoteMaker.settings" />
+        <activity android:name=".NoteMaker.add_new" />
+        <activity android:name=".NoteMaker.more_info" />
+        <activity android:name=".NoteMaker.show_notes" />
+        <activity android:name=".NoteMaker.view_note" />
+       <!-- <activity android:name=".NoteMaker.activity_show_notes_list" />-->
+        <activity android:name=".NoteMaker.swipeListShowNotes"></activity>
+
+
+        <receiver android:name=".NoteMaker.AlarmReceiver" >
+        </receiver>
+    </application>
+
+</manifest>

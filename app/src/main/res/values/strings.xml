@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Note Maker</string>
+    <string name="banner_ad_unit_id">ca-app-pub-7456487299975440/2817826813</string>
+    <string name="interstitial_ad_unit_id">ca-app-pub-7456487299975440/7335424818</string>
+
+
+    <string name="banner_ad_unit_id_test">ca-app-pub-3940256099942544/6300978111</string>
+    <string name="interstitial_ad_unit_id_test">ca-app-pub-3940256099942544/1033173712</string>
+
+    <string name="testing">Displaying real ads</string>
+</resources>

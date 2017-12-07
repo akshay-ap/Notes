@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:ads="http://schemas.android.com/tools"
+
+
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:srcCompat="@mipmap/ic_launcher"
+        android:layout_weight="7"
+        android:id="@+id/imageView_notemaker_icon" />
+
+    <TextView
+        android:textAlignment="center"
+        android:text="MAKING NOTES SIMPLIFIED"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView_making_notes_simplified"
+        android:layout_weight="1" />
+
+    <Button
+        android:id="@+id/button_view_notes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20sp"
+        android:background="@drawable/button_main_menu"
+        android:drawableLeft="@mipmap/icon_view_notes"
+        android:drawablePadding="-85sp"
+        android:paddingLeft="40sp"
+        android:text="VIEW NOTES---"
+        android:textSize="20sp" />
+
+    <Button
+        android:layout_margin="20sp"
+        android:text="ADD NOTE"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/button_add_note"
+        android:paddingLeft="40sp"
+        android:drawablePadding="-85sp"
+        android:drawableLeft="@mipmap/icon_add_new_note"
+        android:background="@drawable/button_main_menu"
+        android:textSize="20sp" />
+
+    <Button
+        android:layout_margin="20sp"
+        android:text="SETTINGS"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/button_settings"
+        android:paddingLeft="40sp"
+        android:drawablePadding="-85sp"
+        android:drawableLeft="@mipmap/ic_settings_black_48dp"
+        android:background="@drawable/button_main_menu"
+        android:textSize="20sp" />
+
+    <Button
+        android:layout_margin="20sp"
+        android:text="INFORMATION"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/button_information"
+        android:paddingLeft="40sp"
+        android:drawablePadding="-85sp"
+
+
+        android:drawableLeft="@mipmap/icon_information"
+        android:background="@drawable/button_main_menu"
+        android:textSize="20sp" />
+
+    <com.google.android.gms.ads.AdView
+        xmlns:ads="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/adView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        ads:adUnitId="@string/banner_ad_unit_id"
+        ads:adSize="BANNER"/>
+</LinearLayout>

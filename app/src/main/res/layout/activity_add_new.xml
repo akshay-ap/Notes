@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="match_parent"
+    android:layout_width="fill_parent"
+    android:fillViewport="false"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TITLE"
+            android:id="@+id/textView_title"
+            />
+
+        <TextView
+            android:text="66"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView_title_count"
+            android:layout_width="102dp"
+            android:layout_margin="2sp"
+            android:padding="2sp" />
+        </LinearLayout>
+
+    <EditText
+        android:background="@drawable/button_main_menu"
+        android:layout_margin="5sp"
+        android:padding="10sp"
+        android:hint="Click here to add Title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/editText_title" />
+
+
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:orientation="horizontal"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/textView_note"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="NOTEssss"
+        android:textAlignment="center"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:text="99"
+        android:layout_width="401dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView_note_count"/>
+
+
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/editText_data"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_margin="5sp"
+            android:layout_weight="1"
+            android:background="@drawable/button_main_menu"
+            android:ems="3"
+            android:gravity="top|left"
+            android:hint="Click here to add note--wee"
+            android:inputType="textMultiLine"
+            android:padding="13sp" />
+
+
+    <TextView
+        android:textAlignment="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="PRIORITY"
+        android:id="@+id/textView_priority"/>
+
+    <EditText
+        android:background="@drawable/button_main_menu"
+        android:layout_margin="5sp"
+        android:padding="10sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:hint="Click here to set Priority"
+        android:id="@+id/editText_priority"/>
+
+    <TextView
+        android:textAlignment="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="DATE"
+        android:id="@+id/textView_date"/>
+
+    <TextView
+        android:textAlignment="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="DATE AND TIME GOES HERE..."
+        android:textColor="#000"
+        android:id="@+id/textView_date_Setter"
+        />
+
+    <Button
+        android:layout_margin="1sp"
+        android:drawableLeft="@mipmap/icon_save"
+        android:onClick="function_save"
+        android:layout_width="match_parent"
+        android:drawablePadding="-85sp"
+        android:layout_height="wrap_content"
+        android:text="SAVE"
+        android:paddingLeft="40sp"
+        android:background="@drawable/button_main_menu"
+        android:id="@+id/button_save"
+       />
+    </LinearLayout>
+</ScrollView>
+
