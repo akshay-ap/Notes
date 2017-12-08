@@ -15,6 +15,8 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
+import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -28,30 +30,28 @@ public class add_new extends AppCompatActivity {
     int ssss;
     Long edit_id;
     DBHelper db;
-    //TextView date_setter;
-    EditText mainNote;
-    EditText title;
+    AutoCompleteTextView mainNote;
+    AutoCompleteTextView title;
     String  actionBarDate;
     SharedPreferences settingsPreferences;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.grid);
-        mainNote=(EditText)findViewById(R.id.editText_data);
-        title=(EditText)findViewById(R.id.editText_title);
+        setContentView(R.layout.add_note);
+        mainNote=(AutoCompleteTextView)findViewById(R.id.editText_data);
+        title=(AutoCompleteTextView)findViewById(R.id.editText_title);
 
-        title.setOnKeyListener(new View.OnKeyListener() {
-            public boolean onKey(View v, int keyCode, KeyEvent event) {
-                // If the event is a key-down event on the "enter" button
-                if ((event.getAction() == KeyEvent.ACTION_DOWN) &&
-                        (keyCode == KeyEvent.KEYCODE_ENTER)) {
-                    // Perform action on key press
-                    Toast.makeText(getApplicationContext(),"a",Toast.LENGTH_SHORT).show();
+        title.setOnEditorActionListener(new AutoCompleteTextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if ((actionId == EditorInfo.IME_ACTION_NEXT)){
+                    mainNote.requestFocus();
                     return true;
                 }
-                return false;
+            return false;
             }
+
         });
 
 
@@ -96,38 +96,21 @@ public class add_new extends AppCompatActivity {
 
         switch (item.getItemId()) {
             case R.id.action_save_note:
-
-             function_save(  null);
+                function_save(  null);
                 return true;
             default:
                 // If we got here, the user's action was not recognized.
                 // Invoke the superclass to handle it.
                 return super.onOptionsItemSelected(item);
-
         }
     }
 
     private void setUI()
     {
-
-        GradientDrawable bgMainNote = (GradientDrawable)mainNote.getBackground();
-        bgMainNote.setColor(settingsPreferences.getInt("text_background_color", Color.WHITE));
-
-        GradientDrawable bgTitle = (GradientDrawable)title.getBackground();
-        bgTitle.setColor(settingsPreferences.getInt("text_background_color", Color.WHITE));
-        //date_setter.setBackgroundResource(R.drawable.button_main_menu);
-
-        //GradientDrawable sd = (GradientDrawable) date_setter.getBackground().mutate();
-        //sd.setColor(settingsPreferences.getInt("text_background_color", Color.WHITE));
-      //  sd.invalidateSelf();
-
         mainNote.setTextColor(settingsPreferences.getInt("text_color",Color.BLACK));
         title.setTextColor(settingsPreferences.getInt("text_color",Color.BLACK));
-        //date_setter.setTextColor(settingsPreferences.getInt("text_color", Color.BLACK));
-
         View view = this.getWindow().getDecorView();
         view.setBackgroundColor(settingsPreferences.getInt("background_color", Color.WHITE));
-
 
     }
     private String getDate()
@@ -186,10 +169,10 @@ public void function_save(View v)
     {
        final   TextView mTextView;
        final   EditText mEditText;
+       mTextView=(TextView)findViewById(R.id.textView_title_count);
+       mEditText=(EditText)findViewById(R.id.editText_title);
+       final TextWatcher mTextEditorWatcher = new TextWatcher() {
 
-        mTextView=(TextView)findViewById(R.id.textView_title_count);
-        mEditText=(EditText)findViewById(R.id.editText_title);
-        final TextWatcher mTextEditorWatcher = new TextWatcher() {
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
             }
 
@@ -203,7 +186,6 @@ public void function_save(View v)
         };
         mEditText.addTextChangedListener(mTextEditorWatcher);
     }
-
 
     private void setCharacterCountForNote()
     {

@@ -43,7 +43,6 @@ public class view_note extends AppCompatActivity {
     TextView priority;
     Long id_of_note;
     Activity activity;
-    public AppWidgetManager appWidgetManager;
     SharedPreferences settingsPreferences;
     @Override
     protected void onCreate(Bundle savedInstanceState) {

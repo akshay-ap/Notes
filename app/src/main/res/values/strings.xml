@@ -1,15 +1,15 @@
 <resources>
-    <string name="app_name">Note Maker</string>
+    <string name="app_name">Notes</string>
     <string name="banner_ad_unit_id">ca-app-pub-7456487299975440/2817826813</string>
     <string name="interstitial_ad_unit_id">ca-app-pub-7456487299975440/7335424818</string>
-
 
     <string name="banner_ad_unit_id_test">ca-app-pub-3940256099942544/6300978111</string>
     <string name="interstitial_ad_unit_id_test">ca-app-pub-3940256099942544/1033173712</string>
 
     <string name="testing">Displaying real ads</string>
-    <string name="add_title">Click Here to add Title</string>
+    <string name="add_title">Title</string>
     <string name="note">Note</string>
     <string name="number_0">0</string>
-    <string name="add_note">Click Here to add note</string>
+    <string name="add_note">Note</string>
+    <string name="save_note">SAVE</string>
 </resources>
