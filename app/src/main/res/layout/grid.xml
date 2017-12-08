@@ -27,8 +27,9 @@
 
 
     <AutoCompleteTextView
-        android:hint="Click Here to add Title"
+        android:hint="@string/add_title"
         android:layout_margin="5sp"
+        android:maxLines="1"
         android:padding="13sp"
         android:background="@drawable/button_main_menu"
         android:layout_width="match_parent"
@@ -42,13 +43,13 @@
         android:orientation="horizontal">
 
         <TextView
-            android:text="Note"
+            android:text="@string/note"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/textView_note" />
 
         <TextView
-            android:text="0"
+            android:text="@string/number_0"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/textView_note_count" />
@@ -57,7 +58,7 @@
 
 
     <AutoCompleteTextView
-        android:hint="Click Here to add note"
+        android:hint="@string/add_note"
         android:gravity="top|left"
         android:padding="10sp"
         android:minLines="3"
@@ -65,32 +66,6 @@
         android:layout_height="wrap_content"
         android:background="@drawable/button_main_menu"
         android:id="@+id/editText_data" />
-
-    <TextView
-        android:text="Priority"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView_priority" />
-
-    <EditText
-        android:layout_width="match_parent"
-        android:paddingLeft="5sp"
-        android:background="@drawable/button_main_menu"
-        android:layout_height="wrap_content"
-        android:inputType="number"
-        android:ems="10"
-        android:hint="Click Here to set priority"
-        android:id="@+id/editText_priority"
-        android:layout_margin="5sp"
-        android:padding="5sp" />
-
-    <TextView
-
-        android:text="Date"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView_date"
-        android:layout_margin="5sp" />
 
     <Button
         android:drawableLeft="@mipmap/icon_save"
@@ -103,12 +78,4 @@
         android:layout_width="match_parent"
         android:onClick="function_save" />
 
-    <TextView
-        android:text="Current Date"
-        android:paddingLeft="5sp"
-        android:paddingRight="5sp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView_date_Setter"
-        android:layout_margin="5sp" />
 </LinearLayout>

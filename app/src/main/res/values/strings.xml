@@ -8,4 +8,8 @@
     <string name="interstitial_ad_unit_id_test">ca-app-pub-3940256099942544/1033173712</string>
 
     <string name="testing">Displaying real ads</string>
+    <string name="add_title">Click Here to add Title</string>
+    <string name="note">Note</string>
+    <string name="number_0">0</string>
+    <string name="add_note">Click Here to add note</string>
 </resources>

@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
@@ -21,14 +22,21 @@ import com.insighters.ash.note_maker.R;
 public class main_menu extends Fragment implements View.OnClickListener{
     Context ctx;
     View V;
+    Notes notes;
     public AdView mAdView;
 
     Button b1,b2,b3,b4;
 
     @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        notes= Notes.getInstance();
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         V=inflater.inflate(R.layout.fragment_main_menu,container,false);
-           b1=(Button)V.findViewById(R.id.button_view_notes);
+        b1=(Button)V.findViewById(R.id.button_view_notes);
         b1.setOnClickListener(this);
         b2=(Button)V.findViewById(R.id.button_settings);
         b2.setOnClickListener(this);
@@ -38,9 +46,10 @@ public class main_menu extends Fragment implements View.OnClickListener{
         b4.setOnClickListener(this);
 
 
+        String androidId = Settings.Secure.getString(getActivity().getContentResolver(), Settings.Secure.ANDROID_ID);
+        String deviceId = Notes.md5(androidId).toUpperCase();
         mAdView = (AdView)V.findViewById(R.id.adView);
-        AdRequest adRequest = new AdRequest.Builder().addTestDevice(Settings.Secure.getString(getActivity().getContentResolver(), Settings.Secure.ANDROID_ID)).build();
-
+        AdRequest adRequest = new AdRequest.Builder().addTestDevice(deviceId).build();
         mAdView.loadAd(adRequest);
         SharedPreferences sharedPreferences=getActivity().getSharedPreferences("Settings", Context.MODE_PRIVATE);
         SharedPreferences.Editor settingsEditor=sharedPreferences.edit();

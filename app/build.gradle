@@ -17,6 +17,10 @@ android {
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+        debug {
+            minifyEnabled false
+            ext.enableCrashlytics = false
+        }
     }
     productFlavors {
     }
@@ -25,9 +29,7 @@ android {
 
 dependencies {
 
-
     compile fileTree(include: ['*.jar'], dir: 'libs')
-
     compile 'com.baoyz.swipemenulistview:library:1.3.0'
     compile 'com.android.support:recyclerview-v7:25.4.0'
     compile "com.daimajia.swipelayout:library:1.2.0@aar"

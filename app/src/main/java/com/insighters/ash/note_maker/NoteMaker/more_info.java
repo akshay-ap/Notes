@@ -2,6 +2,7 @@ package com.insighters.ash.note_maker.NoteMaker;
 
 import android.content.Intent;
 import android.net.Uri;
+import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -31,8 +32,10 @@ public class more_info extends AppCompatActivity {
 
         mInterstitialAd = new InterstitialAd(this);
         mInterstitialAd.setAdUnitId(getString(R.string.interstitial_ad_unit_id));
-        AdRequest adRequest1 = new AdRequest.Builder().addTestDevice("1B5F924BBCE9F4588454638C33177931").build();
-        mInterstitialAd.loadAd(adRequest1);
+        String androidId = Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID);
+        String deviceId = Notes.md5(androidId).toUpperCase();
+        AdRequest adRequest = new AdRequest.Builder().addTestDevice(deviceId).build();
+        mInterstitialAd.loadAd(adRequest);
         mInterstitialAd.setAdListener(new AdListener() {
             public void onAdLoaded() {
                 showInterstitial();
@@ -45,13 +48,10 @@ public class more_info extends AppCompatActivity {
             mInterstitialAd.show();
         }
 
-
-        //========================end interstital ad
-
-
-
         mAdView = (AdView) findViewById(R.id.adView2);
-        AdRequest adRequest= new AdRequest.Builder().addTestDevice("1B5F924BBCE9F4588454638C33177931").build();
+        String androidId = Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID);
+        String deviceId = Notes.md5(androidId).toUpperCase();
+        AdRequest adRequest = new AdRequest.Builder().addTestDevice(deviceId).build();
         mAdView.loadAd(adRequest);
 
     }

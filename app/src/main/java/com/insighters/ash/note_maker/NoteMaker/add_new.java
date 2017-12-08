@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -27,27 +28,36 @@ public class add_new extends AppCompatActivity {
     int ssss;
     Long edit_id;
     DBHelper db;
-    TextView date_setter;
+    //TextView date_setter;
     EditText mainNote;
     EditText title;
     String  actionBarDate;
-    EditText prioritysetter;
     SharedPreferences settingsPreferences;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.grid);
-
-        date_setter =(TextView)findViewById(R.id.textView_date_Setter);
-        prioritysetter=(EditText) findViewById(R.id.editText_priority);
         mainNote=(EditText)findViewById(R.id.editText_data);
         title=(EditText)findViewById(R.id.editText_title);
+
+        title.setOnKeyListener(new View.OnKeyListener() {
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                // If the event is a key-down event on the "enter" button
+                if ((event.getAction() == KeyEvent.ACTION_DOWN) &&
+                        (keyCode == KeyEvent.KEYCODE_ENTER)) {
+                    // Perform action on key press
+                    Toast.makeText(getApplicationContext(),"a",Toast.LENGTH_SHORT).show();
+                    return true;
+                }
+                return false;
+            }
+        });
+
+
         settingsPreferences= getSharedPreferences("Settings", Context.MODE_PRIVATE);
 
         setUI();
-        setText();
-
 
         setCharacterCountForNote();
         setCharacterCountForTitle();
@@ -60,7 +70,6 @@ public class add_new extends AppCompatActivity {
         {
             ArrayList<String> setdata=db.getNote(edit_id);
             //editing current note
-            prioritysetter.setText(setdata.get(2));
             mainNote.setText(setdata.get(1));
             title.setText(setdata.get(0));
         }
@@ -75,8 +84,6 @@ public class add_new extends AppCompatActivity {
         inflater.inflate(R.menu.action_bar_add_note, menu);
         TextView tv = new TextView(this);
         tv.setText(actionBarDate);
-
-
         tv.setPadding(5, 0, 5, 0);
         tv.setTypeface(null, Typeface.BOLD);
         tv.setTextSize(8);
@@ -106,66 +113,55 @@ public class add_new extends AppCompatActivity {
         GradientDrawable bgMainNote = (GradientDrawable)mainNote.getBackground();
         bgMainNote.setColor(settingsPreferences.getInt("text_background_color", Color.WHITE));
 
-
-        GradientDrawable bgprioritySetter = (GradientDrawable)prioritysetter.getBackground();
-        bgprioritySetter.setColor(settingsPreferences.getInt("text_background_color", Color.WHITE));
-
-
         GradientDrawable bgTitle = (GradientDrawable)title.getBackground();
         bgTitle.setColor(settingsPreferences.getInt("text_background_color", Color.WHITE));
-        date_setter.setBackgroundResource(R.drawable.button_main_menu);
+        //date_setter.setBackgroundResource(R.drawable.button_main_menu);
 
-        GradientDrawable sd = (GradientDrawable) date_setter.getBackground().mutate();
-        sd.setColor(settingsPreferences.getInt("text_background_color", Color.WHITE));
+        //GradientDrawable sd = (GradientDrawable) date_setter.getBackground().mutate();
+        //sd.setColor(settingsPreferences.getInt("text_background_color", Color.WHITE));
       //  sd.invalidateSelf();
 
         mainNote.setTextColor(settingsPreferences.getInt("text_color",Color.BLACK));
         title.setTextColor(settingsPreferences.getInt("text_color",Color.BLACK));
-        prioritysetter.setTextColor(settingsPreferences.getInt("text_color",Color.BLACK));
-        date_setter.setTextColor(settingsPreferences.getInt("text_color", Color.BLACK));
+        //date_setter.setTextColor(settingsPreferences.getInt("text_color", Color.BLACK));
 
         View view = this.getWindow().getDecorView();
         view.setBackgroundColor(settingsPreferences.getInt("background_color", Color.WHITE));
 
 
     }
-    private void setText()
+    private String getDate()
     {
-
-
         Calendar c = Calendar.getInstance();
-        String seconds = String.valueOf(c.get(Calendar.SECOND));
         String minutes = String.valueOf(c.get(Calendar.MINUTE));
         String hr = String.valueOf(c.get(Calendar.HOUR));
         String day = String.valueOf(c.get(Calendar.DAY_OF_MONTH));
         String month = String.valueOf(c.get(Calendar.MONTH));
         String year = String.valueOf(c.get(Calendar.YEAR));
-        String total=day+"/"+month+"/"+year+" "+hr+":"+minutes;//+":"+seconds;
+        String date=day+"/"+month+"/"+year+" "+hr+":"+minutes;//+":"+seconds;
         actionBarDate=day+"/"+month+"/"+year;
-        date_setter.setText(String.valueOf(total));
-
-
+        return date;
     }
 
 public void function_save(View v)
-{   db=new DBHelper(this);
+{
+    db=new DBHelper(this);
     EditText e1=(EditText)findViewById(R.id.editText_title);
     EditText e2=(EditText)findViewById(R.id.editText_data);
     String d1,d2,d3,d4;
     d1=e1.getText().toString();
     d2=e2.getText().toString();
-    d3=date_setter.getText().toString();
+    d3=getDate();
 
-    d4=prioritysetter.getText().toString();
+    d4="0";
 
     if(d1.isEmpty()||d2.isEmpty()||d4.isEmpty())
     {
-
         Toast.makeText(getBaseContext(),"Please fill all the data",Toast.LENGTH_SHORT).show();
     }//if not valid then do not insert
     else {
         if (ssss == 1) {
-            db.insertNote(d1, d2, d3, Integer.parseInt(d4));
+            db.insertNote(d1, d2, d3 , Integer.parseInt(d4));
                       finish();
         } else {
             db.edit(edit_id, d1, d2, d3, Integer.parseInt(d4));
@@ -173,24 +169,20 @@ public void function_save(View v)
             intent.putExtra("edit_title",d1);
             intent.putExtra("edit_data",d2);
             intent.putExtra("edit_priority",d4);
-
             setResult(RESULT_OK, intent);
             finish();
         }
     }
     db.close();
-
 }//end function save
 
     @Override
     protected void onResume() {
         setUI();
-        setText();
         super.onResume();
     }
 
     private void setCharacterCountForTitle()
-
     {
        final   TextView mTextView;
        final   EditText mEditText;
@@ -210,13 +202,10 @@ public void function_save(View v)
             }
         };
         mEditText.addTextChangedListener(mTextEditorWatcher);
-
-
     }
 
 
     private void setCharacterCountForNote()
-
     {
         final TextView mTextView;
         final EditText mEditText;
@@ -236,13 +225,6 @@ public void function_save(View v)
             }
         };
         mEditText.addTextChangedListener(mTextEditorWatcher);
-
     }
-
-
-
-
-
-
 
 }//end class

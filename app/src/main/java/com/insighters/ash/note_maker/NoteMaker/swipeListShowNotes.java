@@ -2,6 +2,7 @@ package com.insighters.ash.note_maker.NoteMaker;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -41,8 +42,11 @@ public class swipeListShowNotes extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_swipe_list_show_notes);
         listView = (ListView)findViewById(R.id.list_item);
-        mAdView = (AdView)findViewById(R.id.adView5);
-        AdRequest adRequest = new AdRequest.Builder().addTestDevice("1B5F924BBCE9F4588454638C33177931").build();
+
+        mAdView = (AdView) findViewById(R.id.adView5);
+        String androidId = Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID);
+        String deviceId = Notes.md5(androidId).toUpperCase();
+        AdRequest adRequest = new AdRequest.Builder().addTestDevice(deviceId).build();
         mAdView.loadAd(adRequest);
 
         getDataFromDatabase();

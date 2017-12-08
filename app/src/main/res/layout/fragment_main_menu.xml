@@ -33,7 +33,7 @@
         android:drawableLeft="@mipmap/icon_view_notes"
         android:drawablePadding="-85sp"
         android:paddingLeft="40sp"
-        android:text="VIEW NOTES---"
+        android:text="VIEW NOTES"
         android:textSize="20sp" />
 
     <Button

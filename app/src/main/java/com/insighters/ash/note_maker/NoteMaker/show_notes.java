@@ -1,6 +1,7 @@
 package com.insighters.ash.note_maker.NoteMaker;
 
 import android.content.Intent;
+import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -30,10 +31,13 @@ public class show_notes extends AppCompatActivity {
         setContentView(R.layout.activity_show_notes);
       listView  = (ListView) findViewById(R.id.listview_showlist);
 
-        mAdView = (AdView)findViewById(R.id.adView4);
-        AdRequest adRequest = new AdRequest.Builder().addTestDevice("1B5F924BBCE9F4588454638C33177931").build();
+        mAdView = (AdView) findViewById(R.id.adView4);
+        String androidId = Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID);
+        String deviceId = Notes.md5(androidId).toUpperCase();
+        AdRequest adRequest = new AdRequest.Builder().addTestDevice(deviceId).build();
         mAdView.loadAd(adRequest);
-    populate_list();
+
+        populate_list();
     }//end of on create
 
     @Override

@@ -5,6 +5,7 @@ import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -37,9 +38,11 @@ public class settings extends AppCompatActivity {
         vibrate=(CheckBox)findViewById(R.id.checkBox_vibrate);
         context=getApplicationContext();
 
-       mAdView = (AdView) findViewById(R.id.adView1);
-        AdRequest adRequest1 = new AdRequest.Builder().build();
-        mAdView.loadAd(adRequest1);
+        mAdView = (AdView) findViewById(R.id.adView1);
+        String androidId = Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID);
+        String deviceId = Notes.md5(androidId).toUpperCase();
+        AdRequest adRequest = new AdRequest.Builder().addTestDevice(deviceId).build();
+        mAdView.loadAd(adRequest);
 
         if(sharedPreferences.getInt("show_splash_screen",0)==1)
         {

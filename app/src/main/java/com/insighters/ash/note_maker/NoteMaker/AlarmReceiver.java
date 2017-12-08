@@ -32,10 +32,9 @@ public class AlarmReceiver extends BroadcastReceiver {
             SharedPreferences.Editor editor=sharedPreferences.edit();
             editor.putInt("noteMaker_vibrate",0);
             editor.commit();
-        };
+        }
         if(sharedPreferences.getInt("noteMaker_vibrate",-1)>0) {
-            Vibrator vibrator = (Vibrator) context
-                    .getSystemService(Context.VIBRATOR_SERVICE);
+            Vibrator vibrator = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
             vibrator.vibrate(2000);
         }
         notifyme();

@@ -29,9 +29,6 @@ public class DBHelper extends SQLiteOpenHelper {
     private static final String COLUMN_COLOR = "color";
     private static final String COLUMN_TIME = "created_at";
 
-
-
-
     private static final String CREATE_TABLE_QUERY = "CREATE TABLE IF NOT EXISTS " + TABLE_NAME +
             "( " + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT" + ","
             + COLUMN_TITLE + " TEXT, "
@@ -41,12 +38,10 @@ public class DBHelper extends SQLiteOpenHelper {
             + COLUMN_TIME + "DATETIME DEFAULT CURRENT_TIMESTAMP, "
 
             +COLUMN_COLOR+" INTEGER DEFAULT "+ Color.WHITE +");"
-
-
             ;
+
     Context ctx;
     public DBHelper(Context context) {
-
         super(context, DATABASE_NAME, null, 1);
         ctx=context;
     }
@@ -60,7 +55,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public void clearNotes()
     {
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
-       sqLiteDatabase.execSQL("DROP TABLE  IF EXISTS " + TABLE_NAME);
+        sqLiteDatabase.execSQL("DROP TABLE  IF EXISTS " + TABLE_NAME);
         this.onCreate (sqLiteDatabase);
         sqLiteDatabase.close ();
     }
@@ -78,7 +73,7 @@ public class DBHelper extends SQLiteOpenHelper {
         contentValues.put(COLUMN_DATA, data);
         contentValues.put(COLUMN_DATE, date);
         contentValues.put(COLUMN_PRIORITY, priority);
-       long id= sqLiteDatabase.insert(TABLE_NAME, null, contentValues);
+        long id= sqLiteDatabase.insert(TABLE_NAME, null, contentValues);
         Toast.makeText(ctx,"Note has been added",Toast.LENGTH_SHORT).show();
         Log.i("====id=== ", String.valueOf(id));
         return true;

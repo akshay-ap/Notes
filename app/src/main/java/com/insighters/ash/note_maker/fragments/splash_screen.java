@@ -14,7 +14,7 @@ import com.insighters.ash.note_maker.R;
 
 
 /**
- * Created by ash.note_maker on 4/7/16.
+ * Created by Akshay on 4/7/16.
  */
 public class splash_screen extends Fragment {
 
@@ -26,7 +26,6 @@ public class splash_screen extends Fragment {
         myImageView.startAnimation(myFadeInAnimation);
         return V;
     }
-
     /**
      * Created by Akshay on 4/7/16.
      */
