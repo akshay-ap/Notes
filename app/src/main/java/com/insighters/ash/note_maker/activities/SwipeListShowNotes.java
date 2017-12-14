@@ -1,4 +1,4 @@
-package com.insighters.ash.note_maker.NoteMaker;
+package com.insighters.ash.note_maker.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,32 +12,30 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import com.daimajia.swipe.SwipeLayout;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
+import com.insighters.ash.note_maker.NoteMaker.DBHelper;
+import com.insighters.ash.note_maker.NoteMaker.Notes;
 import com.insighters.ash.note_maker.R;
-import com.insighters.ash.note_maker.activities.AddNew;
-import com.insighters.ash.note_maker.activities.Settings;
-import com.insighters.ash.note_maker.activities.ViewNote;
+import com.insighters.ash.note_maker.adapters.ListViewAdapter;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class swipeListShowNotes extends AppCompatActivity {
+public class SwipeListShowNotes extends AppCompatActivity {
     private DBHelper db;
     private ListView listView;
     private ArrayAdapter<String> adapter;
     private ArrayList<String> titleList;
-    private TextView totalClassmates;
     private SwipeLayout swipeLayout;
     private Map<String,Long> note_titles_map;
     ArrayList<Long> idList;
     private AdView mAdView;
     LayoutInflater inflater ;
-    private final static String TAG = swipeListShowNotes.class.getSimpleName();
+    private final static String TAG = SwipeListShowNotes.class.getSimpleName();
     private ArrayList<String> note_titles;//= new ArrayList<String>( note_titles_map.keySet());
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -277,7 +277,9 @@ public class ViewNote extends AppCompatActivity {
 
                         PendingIntent pendingIntent = PendingIntent.getBroadcast(activity, 0, alarmIntent, 0);
                         AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
-                        alarmManager.set(AlarmManager.RTC_WAKEUP, time, pendingIntent);
+                        if (alarmManager != null) {
+                            alarmManager.set(AlarmManager.RTC_WAKEUP, time, pendingIntent);
+                        }
                     }
                 alertDialog.dismiss();
             }});//end alarm setter

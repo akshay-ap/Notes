@@ -1,4 +1,4 @@
-package com.insighters.ash.note_maker.NoteMaker;
+package com.insighters.ash.note_maker.adapters;
 
 import android.app.Activity;
 import android.content.DialogInterface;
@@ -12,6 +12,8 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.daimajia.swipe.SwipeLayout;
+import com.insighters.ash.note_maker.NoteMaker.DBHelper;
+import com.insighters.ash.note_maker.activities.SwipeListShowNotes;
 import com.insighters.ash.note_maker.R;
 import com.insighters.ash.note_maker.activities.AddNew;
 
@@ -20,7 +22,7 @@ import java.util.List;
 
 public class ListViewAdapter extends ArrayAdapter<String> {
 
-    private swipeListShowNotes activity;
+    private SwipeListShowNotes activity;
     private List<String> titleList;
     private List<Long> idList;
     private Long id_of_note_to_edit;
@@ -29,7 +31,7 @@ public class ListViewAdapter extends ArrayAdapter<String> {
 
 
 
-    public ListViewAdapter(swipeListShowNotes context, int resource, ArrayList<String> objects , ArrayList<Long> idList) {
+    public ListViewAdapter(SwipeListShowNotes context, int resource, ArrayList<String> objects , ArrayList<Long> idList) {
         super(context, resource, objects);
         this.activity = context;
         this.titleList = ((List<String>) objects);

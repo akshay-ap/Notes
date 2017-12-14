@@ -30,7 +30,7 @@
         <activity android:name=".activities.ShowNotes" />
         <activity android:name=".activities.ViewNote" />
         <!-- <activity android:name=".NoteMaker.activity_show_notes_list" /> -->
-        <activity android:name=".NoteMaker.swipeListShowNotes" />
+        <activity android:name=".activities.SwipeListShowNotes" />
 
         <receiver android:name=".NoteMaker.AlarmReceiver"></receiver>
 

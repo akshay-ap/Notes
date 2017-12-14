@@ -11,6 +11,7 @@ import android.support.v4.app.NotificationCompat;
 import android.widget.Toast;
 
 import com.insighters.ash.note_maker.R;
+import com.insighters.ash.note_maker.activities.SwipeListShowNotes;
 
 /**
  * Created by row_hammer on 15/12/16.
@@ -48,7 +49,7 @@ public class AlarmReceiver extends BroadcastReceiver {
         mBuilder.setSmallIcon(R.mipmap.ic_launcher);
         mBuilder.setContentTitle(title);
         mBuilder.setContentText(note);
-        Intent notificationIntent = new Intent(context, swipeListShowNotes.class);
+        Intent notificationIntent = new Intent(context, SwipeListShowNotes.class);
         PendingIntent contentIntent = PendingIntent.getActivity(context, 0, notificationIntent,
                 PendingIntent.FLAG_UPDATE_CURRENT);
         mBuilder.setContentIntent(contentIntent);

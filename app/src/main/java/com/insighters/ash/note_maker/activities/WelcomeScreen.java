@@ -20,7 +20,7 @@ public class WelcomeScreen extends AppCompatActivity{
 
         SharedPreferences sharedPreferences=getSharedPreferences("Settings", Context.MODE_PRIVATE);
 
-if(sharedPreferences.contains("show_splash_screen")==true)
+if(sharedPreferences.contains("show_splash_screen"))
 {
 int i=sharedPreferences.getInt("show_splash_screen",8);
     if(i==1)
@@ -67,7 +67,7 @@ else
 {
     SharedPreferences.Editor editor=sharedPreferences.edit();
     editor.putInt("show_splash_screen",1);
-    editor.commit();
+    editor.apply();
     android.app.FragmentTransaction transaction = getFragmentManager().beginTransaction();
     FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
 

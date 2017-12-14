@@ -14,14 +14,11 @@ import com.insighters.ash.note_maker.NoteMaker.DBHelper;
 import com.insighters.ash.note_maker.R;
 import com.insighters.ash.note_maker.adapters.NotesAdapter;
 
-import java.util.List;
 import java.util.Map;
 
 public class ViewNotesCard extends AppCompatActivity {
 
     private RecyclerView recyclerView;
-    private NotesAdapter notesAdapter;
-    private Map<String,Long> noteTitles;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +29,7 @@ public class ViewNotesCard extends AppCompatActivity {
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(this, 1);
         recyclerView.setLayoutManager(mLayoutManager);
-        recyclerView.addItemDecoration(new GridSpacingItemDecoration(2, dpToPx(10), true));
+        recyclerView.addItemDecoration(new GridSpacingItemDecoration(2, dpToPx(), true));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
 
     }
@@ -40,8 +37,8 @@ public class ViewNotesCard extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        noteTitles = prepareNotes();
-        notesAdapter = new NotesAdapter(this,noteTitles);
+        Map<String, Long> noteTitles = prepareNotes();
+        NotesAdapter notesAdapter = new NotesAdapter(this, noteTitles);
         recyclerView.setAdapter(notesAdapter);
 
     }
@@ -52,7 +49,7 @@ public class ViewNotesCard extends AppCompatActivity {
         private int spacing;
         private boolean includeEdge;
 
-        public GridSpacingItemDecoration(int spanCount, int spacing, boolean includeEdge) {
+        private GridSpacingItemDecoration(int spanCount, int spacing, boolean includeEdge) {
             this.spanCount = spanCount;
             this.spacing = spacing;
             this.includeEdge = includeEdge;
@@ -89,8 +86,8 @@ public class ViewNotesCard extends AppCompatActivity {
         return noteTitles;
     }
 
-    private int dpToPx(int dp) {
+    private int dpToPx() {
         Resources r = getResources();
-        return Math.round(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, r.getDisplayMetrics()));
+        return Math.round(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 10, r.getDisplayMetrics()));
     }
 }
