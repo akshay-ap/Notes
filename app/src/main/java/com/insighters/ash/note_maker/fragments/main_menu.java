@@ -1,4 +1,4 @@
-package com.insighters.ash.note_maker.NoteMaker;
+package com.insighters.ash.note_maker.fragments;
 
 import android.content.Context;
 import android.content.Intent;
@@ -12,11 +12,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.Toast;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
+import com.insighters.ash.note_maker.NoteMaker.Notes;
+import com.insighters.ash.note_maker.activities.more_info;
+import com.insighters.ash.note_maker.activities.settings;
+import com.insighters.ash.note_maker.NoteMaker.swipeListShowNotes;
 import com.insighters.ash.note_maker.R;
+import com.insighters.ash.note_maker.activities.add_new;
 
 
 public class main_menu extends Fragment implements View.OnClickListener{

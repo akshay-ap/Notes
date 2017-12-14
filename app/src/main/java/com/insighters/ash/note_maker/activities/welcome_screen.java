@@ -1,4 +1,4 @@
-package com.insighters.ash.note_maker.NoteMaker;
+package com.insighters.ash.note_maker.activities;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -7,6 +7,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import com.insighters.ash.note_maker.fragments.main_menu;
 import com.insighters.ash.note_maker.R;
 import com.insighters.ash.note_maker.fragments.splash_screen;
 

@@ -1,4 +1,4 @@
-package com.insighters.ash.note_maker.NoteMaker;
+package com.insighters.ash.note_maker.activities;
 
 import android.content.Context;
 import android.content.DialogInterface;
@@ -16,6 +16,8 @@ import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.InterstitialAd;
 import com.google.android.gms.ads.MobileAds;
+import com.insighters.ash.note_maker.NoteMaker.DBHelper;
+import com.insighters.ash.note_maker.NoteMaker.Notes;
 import com.insighters.ash.note_maker.R;
 
 import petrov.kristiyan.colorpicker.ColorPicker;

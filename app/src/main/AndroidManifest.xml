@@ -14,18 +14,18 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".NoteMaker.welcome_screen">
+        <activity android:name=".activities.welcome_screen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".NoteMaker.settings" />
-        <activity android:name=".NoteMaker.add_new" />
-        <activity android:name=".NoteMaker.more_info" />
-        <activity android:name=".NoteMaker.show_notes" />
-        <activity android:name=".NoteMaker.view_note" />
+        <activity android:name=".activities.settings" />
+        <activity android:name=".activities.add_new" />
+        <activity android:name=".activities.more_info" />
+        <activity android:name=".activities.show_notes" />
+        <activity android:name=".activities.view_note" />
        <!-- <activity android:name=".NoteMaker.activity_show_notes_list" />-->
         <activity android:name=".NoteMaker.swipeListShowNotes"></activity>
 

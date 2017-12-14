@@ -1,4 +1,4 @@
-package com.insighters.ash.note_maker.NoteMaker;
+package com.insighters.ash.note_maker.activities;
 
 import android.content.Intent;
 import android.provider.Settings;
@@ -16,6 +16,8 @@ import android.widget.ListView;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
+import com.insighters.ash.note_maker.NoteMaker.DBHelper;
+import com.insighters.ash.note_maker.NoteMaker.Notes;
 import com.insighters.ash.note_maker.R;
 
 import java.util.ArrayList;

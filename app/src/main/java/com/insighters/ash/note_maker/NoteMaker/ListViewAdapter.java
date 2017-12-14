@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.daimajia.swipe.SwipeLayout;
 import com.insighters.ash.note_maker.R;
+import com.insighters.ash.note_maker.activities.add_new;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.insighters.ash.note_maker.NoteMaker;
+package com.insighters.ash.note_maker.activities;
 
 import android.content.Context;
 import android.content.Intent;
@@ -21,6 +21,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.insighters.ash.note_maker.NoteMaker.DBHelper;
 import com.insighters.ash.note_maker.R;
 
 import java.util.ArrayList;

@@ -19,6 +19,9 @@ import com.daimajia.swipe.SwipeLayout;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.insighters.ash.note_maker.R;
+import com.insighters.ash.note_maker.activities.add_new;
+import com.insighters.ash.note_maker.activities.settings;
+import com.insighters.ash.note_maker.activities.view_note;
 
 import java.util.ArrayList;
 import java.util.HashMap;
