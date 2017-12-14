@@ -13,7 +13,7 @@ import android.widget.TextView;
 
 import com.daimajia.swipe.SwipeLayout;
 import com.insighters.ash.note_maker.R;
-import com.insighters.ash.note_maker.activities.add_new;
+import com.insighters.ash.note_maker.activities.AddNew;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -71,7 +71,7 @@ public class ListViewAdapter extends ArrayAdapter<String> {
             public void onClick(View v) {
 
 
-                Intent intent_edit=new Intent(getContext(),add_new.class);
+                Intent intent_edit=new Intent(getContext(),AddNew.class);
                 intent_edit.putExtra("column_name",0);
                 intent_edit.putExtra("colmun_id_to_edit",idList.get(position));
 

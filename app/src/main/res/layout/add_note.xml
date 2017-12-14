@@ -49,7 +49,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="10"
-        android:background="@drawable/button_main_menu"
+        android:background="@drawable/round_corner"
         android:drawableLeft="@mipmap/icon_save"
         android:drawablePadding="-85sp"
         android:onClick="function_save"

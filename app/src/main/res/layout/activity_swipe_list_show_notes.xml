@@ -10,7 +10,7 @@
     <ListView
 
         android:id="@+id/list_item"
-        android:background="@drawable/button_sharp_corner"
+        android:background="@drawable/sharp_corner"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"

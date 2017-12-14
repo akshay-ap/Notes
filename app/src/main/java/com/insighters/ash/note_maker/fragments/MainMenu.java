@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.provider.Settings;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -16,14 +15,14 @@ import android.widget.Button;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.insighters.ash.note_maker.NoteMaker.Notes;
-import com.insighters.ash.note_maker.activities.more_info;
-import com.insighters.ash.note_maker.activities.settings;
-import com.insighters.ash.note_maker.NoteMaker.swipeListShowNotes;
+import com.insighters.ash.note_maker.activities.AddNew;
+import com.insighters.ash.note_maker.activities.Settings;
+import com.insighters.ash.note_maker.activities.ViewNotesCard;
+import com.insighters.ash.note_maker.activities.MoreInfo;
 import com.insighters.ash.note_maker.R;
-import com.insighters.ash.note_maker.activities.add_new;
 
 
-public class main_menu extends Fragment implements View.OnClickListener{
+public class MainMenu extends Fragment implements View.OnClickListener{
     Context ctx;
     View V;
     Notes notes;
@@ -50,7 +49,7 @@ public class main_menu extends Fragment implements View.OnClickListener{
         b4.setOnClickListener(this);
 
 
-        String androidId = Settings.Secure.getString(getActivity().getContentResolver(), Settings.Secure.ANDROID_ID);
+        String androidId = android.provider.Settings.Secure.getString(getActivity().getContentResolver(), android.provider.Settings.Secure.ANDROID_ID);
         String deviceId = Notes.md5(androidId).toUpperCase();
         mAdView = (AdView)V.findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().addTestDevice(deviceId).build();
@@ -95,23 +94,23 @@ public class main_menu extends Fragment implements View.OnClickListener{
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.button_settings:
-                Intent i=new Intent(getActivity(),settings.class);
+                Intent i=new Intent(getActivity(),Settings.class);
                 i.putExtra("which_event",1);
 
                 startActivity(i);
                 break;
             case R.id.button_add_note:
-                Intent i2=new Intent(getActivity(),add_new.class);
+                Intent i2=new Intent(getActivity(),AddNew.class);
                 i2.putExtra("which_event",2);
                 startActivity(i2);
                 break;
             case R.id.button_information:
-                Intent i3=new Intent(getActivity(),more_info.class);
+                Intent i3=new Intent(getActivity(),MoreInfo.class);
                 i3.putExtra("which_event",3);
                 startActivity(i3);
                 break;
             case R.id.button_view_notes:
-                Intent i4=new Intent(getActivity(),swipeListShowNotes.class);
+                Intent i4=new Intent(getActivity(),ViewNotesCard.class);
                 i4.putExtra("which_event",4);
                 startActivity(i4);
                 break;

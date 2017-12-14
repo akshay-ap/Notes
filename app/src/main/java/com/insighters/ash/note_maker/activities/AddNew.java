@@ -27,7 +27,7 @@ import com.insighters.ash.note_maker.R;
 import java.util.ArrayList;
 import java.util.Calendar;
 //Need more changes
-public class add_new extends AppCompatActivity {
+public class AddNew extends AppCompatActivity {
     int ssss;
     Long edit_id;
     DBHelper db;

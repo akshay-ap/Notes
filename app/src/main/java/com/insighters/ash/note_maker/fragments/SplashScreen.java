@@ -16,7 +16,7 @@ import com.insighters.ash.note_maker.R;
 /**
  * Created by Akshay on 4/7/16.
  */
-public class splash_screen extends Fragment {
+public class SplashScreen extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

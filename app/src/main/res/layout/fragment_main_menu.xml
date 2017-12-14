@@ -29,7 +29,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="20sp"
-        android:background="@drawable/button_main_menu"
+        android:background="@drawable/round_corner"
         android:drawableLeft="@mipmap/icon_view_notes"
         android:drawablePadding="-85sp"
         android:paddingLeft="40sp"
@@ -45,7 +45,7 @@
         android:paddingLeft="40sp"
         android:drawablePadding="-85sp"
         android:drawableLeft="@mipmap/icon_add_new_note"
-        android:background="@drawable/button_main_menu"
+        android:background="@drawable/round_corner"
         android:textSize="20sp" />
 
     <Button
@@ -57,7 +57,7 @@
         android:paddingLeft="40sp"
         android:drawablePadding="-85sp"
         android:drawableLeft="@mipmap/ic_settings_black_48dp"
-        android:background="@drawable/button_main_menu"
+        android:background="@drawable/round_corner"
         android:textSize="20sp" />
 
     <Button
@@ -71,7 +71,7 @@
 
 
         android:drawableLeft="@mipmap/icon_information"
-        android:background="@drawable/button_main_menu"
+        android:background="@drawable/round_corner"
         android:textSize="20sp" />
 
     <com.google.android.gms.ads.AdView

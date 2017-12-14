@@ -16,7 +16,7 @@ import com.insighters.ash.note_maker.BuildConfig;
 import com.insighters.ash.note_maker.NoteMaker.Notes;
 import com.insighters.ash.note_maker.R;
 
-public class more_info extends AppCompatActivity {
+public class MoreInfo extends AppCompatActivity {
     private AdView mAdView;
 
     InterstitialAd mInterstitialAd;

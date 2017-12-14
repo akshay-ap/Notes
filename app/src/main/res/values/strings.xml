@@ -12,4 +12,5 @@
     <string name="number_0">0</string>
     <string name="add_note">Note</string>
     <string name="save_note">SAVE</string>
+    <string name="title">Title</string>
 </resources>

@@ -2,7 +2,6 @@ package com.insighters.ash.note_maker.NoteMaker;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -19,9 +18,9 @@ import com.daimajia.swipe.SwipeLayout;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.insighters.ash.note_maker.R;
-import com.insighters.ash.note_maker.activities.add_new;
-import com.insighters.ash.note_maker.activities.settings;
-import com.insighters.ash.note_maker.activities.view_note;
+import com.insighters.ash.note_maker.activities.AddNew;
+import com.insighters.ash.note_maker.activities.Settings;
+import com.insighters.ash.note_maker.activities.ViewNote;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -47,7 +46,7 @@ public class swipeListShowNotes extends AppCompatActivity {
         listView = (ListView)findViewById(R.id.list_item);
 
         mAdView = (AdView) findViewById(R.id.adView5);
-        String androidId = Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID);
+        String androidId = android.provider.Settings.Secure.getString(getContentResolver(), android.provider.Settings.Secure.ANDROID_ID);
         String deviceId = Notes.md5(androidId).toUpperCase();
         AdRequest adRequest = new AdRequest.Builder().addTestDevice(deviceId).build();
         mAdView.loadAd(adRequest);
@@ -70,8 +69,8 @@ public class swipeListShowNotes extends AppCompatActivity {
 
         switch (item.getItemId()) {
             case R.id.action_settings:
-                // User chose the "Settings" item, show the app settings UI...
-                Intent i=new Intent(getApplicationContext(),settings.class);
+                // User chose the "Settings" item, show the app Settings UI...
+                Intent i=new Intent(getApplicationContext(),Settings.class);
                 i.putExtra("which_event",1);
 
                 startActivity(i);
@@ -80,7 +79,7 @@ public class swipeListShowNotes extends AppCompatActivity {
             case R.id.action_add_note:
                 // User chose the "Favorite" action, mark the current item
                 // as a favorite...
-                Intent i2=new Intent(getApplicationContext(),add_new.class);
+                Intent i2=new Intent(getApplicationContext(),AddNew.class);
                 i2.putExtra("which_event",2);
                 startActivity(i2);
                 return true;
@@ -199,7 +198,7 @@ public class swipeListShowNotes extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Intent intent=new Intent(getApplicationContext(),view_note.class);
+                Intent intent=new Intent(getApplicationContext(),ViewNote.class);
                 // String sending=(String)listView.getItemAtPosition(i);
                 Long sending =note_titles_map.get(titleList.get(i));
                 Log.i("===pos===", String.valueOf(note_titles_map.get(titleList.get(i))));

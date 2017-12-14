@@ -8,7 +8,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.insighters.ash.note_maker.activities.settings">
+    tools:context="com.insighters.ash.note_maker.activities.Settings">
 
     <com.google.android.gms.ads.AdView
         android:id="@+id/adView1"
@@ -55,7 +55,7 @@
             android:text="TEXT COLOR"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/button_main_menu"
+            android:background="@drawable/round_corner"
             android:layout_margin="5sp"
             android:id="@+id/button_text_color"
            />
@@ -65,7 +65,7 @@
             android:text="TEXT BACKGROUND COLOR"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/button_main_menu"
+            android:background="@drawable/round_corner"
             android:id="@+id/button"
             android:layout_margin="5sp"
 
@@ -76,7 +76,7 @@
             android:text="BACKGROUND COLOR"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/button_main_menu"
+            android:background="@drawable/round_corner"
             android:id="@+id/button_background_color"
             android:layout_margin="5sp"
 
@@ -88,7 +88,7 @@
             android:layout_width="match_parent"
             android:layout_margin="5sp"
             android:layout_height="wrap_content"
-            android:background="@drawable/button_main_menu"
+            android:background="@drawable/round_corner"
             android:id="@+id/button_clear_all_notes" />
 
         <Button
@@ -96,7 +96,7 @@
             android:text="RESET SETTING"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/button_main_menu"
+            android:background="@drawable/round_corner"
             android:id="@+id/button_reset_settings"
             android:layout_margin="5sp"
              />

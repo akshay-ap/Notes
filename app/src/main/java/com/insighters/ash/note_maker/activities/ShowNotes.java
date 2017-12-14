@@ -1,7 +1,6 @@
 package com.insighters.ash.note_maker.activities;
 
 import android.content.Intent;
-import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -23,7 +22,7 @@ import com.insighters.ash.note_maker.R;
 import java.util.ArrayList;
 import java.util.Map;
 
-public class show_notes extends AppCompatActivity {
+public class ShowNotes extends AppCompatActivity {
     DBHelper db;
     ListView listView;
     private AdView mAdView;
@@ -34,7 +33,7 @@ public class show_notes extends AppCompatActivity {
       listView  = (ListView) findViewById(R.id.listview_showlist);
 
         mAdView = (AdView) findViewById(R.id.adView4);
-        String androidId = Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID);
+        String androidId = android.provider.Settings.Secure.getString(getContentResolver(), android.provider.Settings.Secure.ANDROID_ID);
         String deviceId = Notes.md5(androidId).toUpperCase();
         AdRequest adRequest = new AdRequest.Builder().addTestDevice(deviceId).build();
         mAdView.loadAd(adRequest);
@@ -54,8 +53,8 @@ public class show_notes extends AppCompatActivity {
 
         switch (item.getItemId()) {
             case R.id.action_settings:
-                // User chose the "Settings" item, show the app settings UI...
-                Intent i=new Intent(getApplicationContext(),settings.class);
+                // User chose the "Settings" item, show the app Settings UI...
+                Intent i=new Intent(getApplicationContext(),Settings.class);
                 i.putExtra("which_event",1);
 
                 startActivity(i);
@@ -64,7 +63,7 @@ public class show_notes extends AppCompatActivity {
             case R.id.action_add_note:
                 // User chose the "Favorite" action, mark the current item
                 // as a favorite...
-                Intent i2=new Intent(getApplicationContext(),add_new.class);
+                Intent i2=new Intent(getApplicationContext(),AddNew.class);
                 i2.putExtra("which_event",2);
                 startActivity(i2);
                 return true;
@@ -91,7 +90,7 @@ public void populate_list()
     listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-        Intent intent=new Intent(getApplicationContext(),view_note.class);
+        Intent intent=new Intent(getApplicationContext(),ViewNote.class);
        // String sending=(String)listView.getItemAtPosition(i);
         Long sending =note_titles_map.get(note_titles.get(i));
         Log.i("===pos===", String.valueOf(note_titles_map.get(note_titles.get(i))));

@@ -7,11 +7,11 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-import com.insighters.ash.note_maker.fragments.main_menu;
+import com.insighters.ash.note_maker.fragments.MainMenu;
 import com.insighters.ash.note_maker.R;
-import com.insighters.ash.note_maker.fragments.splash_screen;
+import com.insighters.ash.note_maker.fragments.SplashScreen;
 
-public class welcome_screen extends AppCompatActivity{
+public class WelcomeScreen extends AppCompatActivity{
 
     CountDownTimer countDownTimer;
     @Override
@@ -26,7 +26,7 @@ int i=sharedPreferences.getInt("show_splash_screen",8);
     if(i==1)
     {    android.app.FragmentTransaction transaction = getFragmentManager().beginTransaction();
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        ft.replace(R.id.frame_layout,new splash_screen());
+        ft.replace(R.id.frame_layout,new SplashScreen());
         ft.commit();
         countDownTimer=new CountDownTimer(1500, 1000) {
             @Override
@@ -39,7 +39,7 @@ int i=sharedPreferences.getInt("show_splash_screen",8);
                 android.app.FragmentTransaction transaction = getFragmentManager().beginTransaction();
                 FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
                 ft.setCustomAnimations(R.anim.fade_in,R.anim.fade_out);
-                ft.replace(R.id.frame_layout, new main_menu());
+                ft.replace(R.id.frame_layout, new MainMenu());
 
                 ft.commit();
                 transaction.commit();
@@ -55,7 +55,7 @@ int i=sharedPreferences.getInt("show_splash_screen",8);
     { android.app.FragmentTransaction transaction = getFragmentManager().beginTransaction();
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
 
-        ft.replace(R.id.frame_layout, new main_menu());
+        ft.replace(R.id.frame_layout, new MainMenu());
 
         ft.commit();
         transaction.commit();
@@ -71,7 +71,7 @@ else
     android.app.FragmentTransaction transaction = getFragmentManager().beginTransaction();
     FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
 
-    ft.replace(R.id.frame_layout, new main_menu());
+    ft.replace(R.id.frame_layout, new MainMenu());
 
     ft.commit();
     transaction.commit();

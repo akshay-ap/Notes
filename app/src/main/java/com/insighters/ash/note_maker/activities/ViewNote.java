@@ -31,11 +31,11 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
-public class view_note extends AppCompatActivity {
+public class ViewNote extends AppCompatActivity {
     TextView title;
     TextView mainNote;
     TextView date;
-    TextView priority;
+    //TextView priority;
     Long id_of_note;
     Activity activity;
     SharedPreferences settingsPreferences;
@@ -47,7 +47,7 @@ public class view_note extends AppCompatActivity {
         DBHelper dbHelper=new DBHelper(this);
         title=(TextView)findViewById(R.id.textView_title_count);
         mainNote=(TextView)findViewById(R.id.textView_main_text);
-        priority=(TextView)findViewById(R.id.textView_priority);
+        //priority=(TextView)findViewById(R.id.textView_priority);
         date=(TextView)findViewById(R.id.textView_view_date);
         //recieve intent
 
@@ -59,7 +59,7 @@ public class view_note extends AppCompatActivity {
 
         title.setText(a1.get(0));
         mainNote.setText(a1.get(1));
-        priority.setText(a1.get(2));
+       // priority.setText(a1.get(2));
         date.setText(a1.get(3));
         id_of_note= Long.valueOf(a1.get(4));
         settingsPreferences=getSharedPreferences("Settings", Context.MODE_PRIVATE);
@@ -85,7 +85,7 @@ public class view_note extends AppCompatActivity {
     {
         title.setTextColor(settingsPreferences.getInt("text_color", Color.BLACK));
         mainNote.setTextColor(settingsPreferences.getInt("text_color", Color.BLACK));
-        priority.setTextColor(settingsPreferences.getInt("text_color", Color.BLACK));
+        //priority.setTextColor(settingsPreferences.getInt("text_color", Color.BLACK));
         date.setTextColor(settingsPreferences.getInt("text_color", Color.BLACK));
     }//set_text_color
 
@@ -100,9 +100,9 @@ public class view_note extends AppCompatActivity {
         bgNoteSetter.setColor(settingsPreferences.getInt("text_background_color", Color.WHITE));
         bgNoteSetter.invalidateSelf();
 
-        GradientDrawable bgPrioritySetter = (GradientDrawable)priority.getBackground().mutate();
-        bgPrioritySetter.setColor(settingsPreferences.getInt("text_background_color", Color.WHITE));
-        bgPrioritySetter.invalidateSelf();
+       // GradientDrawable bgPrioritySetter = (GradientDrawable)priority.getBackground().mutate();
+      //  bgPrioritySetter.setColor(settingsPreferences.getInt("text_background_color", Color.WHITE));
+      //  bgPrioritySetter.invalidateSelf();
 
         GradientDrawable bgTitle = (GradientDrawable)title.getBackground().mutate();
         bgTitle.setColor(settingsPreferences.getInt("text_background_color", Color.WHITE));
@@ -123,7 +123,7 @@ public class view_note extends AppCompatActivity {
     }
     public void edit_note_func(View v)
     {
-       Intent intent_edit=new Intent(getApplicationContext(),add_new.class);
+       Intent intent_edit=new Intent(getApplicationContext(),AddNew.class);
         intent_edit.putExtra("column_name",0);
         intent_edit.putExtra("colmun_id_to_edit",id_of_note);
         startActivity(intent_edit);
@@ -142,7 +142,7 @@ public class view_note extends AppCompatActivity {
 
         switch (item.getItemId()) {
             case R.id.action_edit_note:
-                Intent intent_edit=new Intent(this,add_new.class);
+                Intent intent_edit=new Intent(this,AddNew.class);
                 intent_edit.putExtra("column_name",0);
                 intent_edit.putExtra("colmun_id_to_edit",id_of_note);
                 startActivityForResult(intent_edit, 1);
@@ -154,7 +154,7 @@ public class view_note extends AppCompatActivity {
                 return  true;
 
             case R.id.action_settings_1:
-                Intent i=new Intent(getApplicationContext(),settings.class);
+                Intent i=new Intent(getApplicationContext(),Settings.class);
                 i.putExtra("which_event",1);
                 startActivity(i);
                 return true;
@@ -177,7 +177,7 @@ public class view_note extends AppCompatActivity {
             if(resultCode == RESULT_OK){
                title.setText(data.getStringExtra("edit_title"));
                mainNote.setText(data.getStringExtra("edit_data"));
-                priority.setText(data.getStringExtra("edit_priority"));
+               // priority.setText(data.getStringExtra("edit_priority"));
 
 
             }

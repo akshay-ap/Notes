@@ -5,7 +5,6 @@ import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.provider.Settings;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -14,8 +13,6 @@ import android.widget.Toast;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
-import com.google.android.gms.ads.InterstitialAd;
-import com.google.android.gms.ads.MobileAds;
 import com.insighters.ash.note_maker.NoteMaker.DBHelper;
 import com.insighters.ash.note_maker.NoteMaker.Notes;
 import com.insighters.ash.note_maker.R;
@@ -23,7 +20,7 @@ import com.insighters.ash.note_maker.R;
 import petrov.kristiyan.colorpicker.ColorPicker;
 
 
-public class settings extends AppCompatActivity {
+public class Settings extends AppCompatActivity {
     CheckBox checked;
     Context context;
     CheckBox vibrate;
@@ -41,7 +38,7 @@ public class settings extends AppCompatActivity {
         context=getApplicationContext();
 
         mAdView = (AdView) findViewById(R.id.adView1);
-        String androidId = Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID);
+        String androidId = android.provider.Settings.Secure.getString(getContentResolver(), android.provider.Settings.Secure.ANDROID_ID);
         String deviceId = Notes.md5(androidId).toUpperCase();
         AdRequest adRequest = new AdRequest.Builder().addTestDevice(deviceId).build();
         mAdView.loadAd(adRequest);
@@ -188,7 +185,7 @@ public class settings extends AppCompatActivity {
     }//end click_reset
     private AlertDialog AskOption()
     {
-       String type_settings="Do you want to delete all settings?";
+       String type_settings="Do you want to delete all Settings?";
         String type_notes="Do you want to delete all notes?";
 String str="";
         if(type_confirm==1)
@@ -205,7 +202,7 @@ String str="";
 
                     public void onClick(DialogInterface dialog, int whichButton) {
                        if(type_confirm==1){
-                           //reset settings
+                           //reset Settings
                        reset_settings();
 
                        }
@@ -277,4 +274,4 @@ String str="";
         super.onResume();
     }
 
-}//end of class settings
+}//end of class Settings
