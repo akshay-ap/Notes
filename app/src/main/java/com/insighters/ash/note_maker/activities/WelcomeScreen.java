@@ -17,42 +17,56 @@ public class WelcomeScreen extends AppCompatActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         SharedPreferences sharedPreferences=getSharedPreferences("Settings", Context.MODE_PRIVATE);
+    if(sharedPreferences.contains("show_splash_screen"))
+    {
+    int i=sharedPreferences.getInt("show_splash_screen",8);
+        if(i==1)
+        {    android.app.FragmentTransaction transaction = getFragmentManager().beginTransaction();
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            ft.replace(R.id.frame_layout,new SplashScreen());
+            ft.commit();
+            countDownTimer=new CountDownTimer(1500, 1000) {
+                @Override
+                public void onTick(long l) {
+                }
 
-if(sharedPreferences.contains("show_splash_screen"))
-{
-int i=sharedPreferences.getInt("show_splash_screen",8);
-    if(i==1)
-    {    android.app.FragmentTransaction transaction = getFragmentManager().beginTransaction();
-        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        ft.replace(R.id.frame_layout,new SplashScreen());
-        ft.commit();
-        countDownTimer=new CountDownTimer(1500, 1000) {
-            @Override
-            public void onTick(long l) {
-            }
+                @Override
+                public void onFinish() {
 
-            @Override
-            public void onFinish() {
+                    android.app.FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                    FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+                    ft.setCustomAnimations(R.anim.fade_in,R.anim.fade_out);
+                    ft.replace(R.id.frame_layout, new MainMenu());
 
-                android.app.FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-                ft.setCustomAnimations(R.anim.fade_in,R.anim.fade_out);
-                ft.replace(R.id.frame_layout, new MainMenu());
+                    ft.commit();
+                    transaction.commit();
 
-                ft.commit();
-                transaction.commit();
+                }
+            };
 
-            }
-        };
+            countDownTimer.start();
+            setContentView(R.layout.activity_welcome_screen);
 
-        countDownTimer.start();
-        setContentView(R.layout.activity_welcome_screen);
+        }
+        else
+        { android.app.FragmentTransaction transaction = getFragmentManager().beginTransaction();
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
 
+            ft.replace(R.id.frame_layout, new MainMenu());
+
+            ft.commit();
+            transaction.commit();
+            setContentView(R.layout.activity_welcome_screen);
+
+        }
     }
     else
-    { android.app.FragmentTransaction transaction = getFragmentManager().beginTransaction();
+    {
+        SharedPreferences.Editor editor=sharedPreferences.edit();
+        editor.putInt("show_splash_screen",1);
+        editor.apply();
+        android.app.FragmentTransaction transaction = getFragmentManager().beginTransaction();
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
 
         ft.replace(R.id.frame_layout, new MainMenu());
@@ -62,27 +76,7 @@ int i=sharedPreferences.getInt("show_splash_screen",8);
         setContentView(R.layout.activity_welcome_screen);
 
     }
-}
-else
-{
-    SharedPreferences.Editor editor=sharedPreferences.edit();
-    editor.putInt("show_splash_screen",1);
-    editor.apply();
-    android.app.FragmentTransaction transaction = getFragmentManager().beginTransaction();
-    FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-
-    ft.replace(R.id.frame_layout, new MainMenu());
-
-    ft.commit();
-    transaction.commit();
-    setContentView(R.layout.activity_welcome_screen);
-
-}
-
-
-
 
     }
-
 
 }

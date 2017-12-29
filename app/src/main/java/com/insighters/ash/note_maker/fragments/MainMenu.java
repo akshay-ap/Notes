@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -14,6 +15,7 @@ import android.widget.Button;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
+import com.insighters.ash.note_maker.BuildConfig;
 import com.insighters.ash.note_maker.NoteMaker.Notes;
 import com.insighters.ash.note_maker.activities.AddNew;
 import com.insighters.ash.note_maker.activities.Settings;
@@ -48,11 +50,17 @@ public class MainMenu extends Fragment implements View.OnClickListener{
         b4=(Button)V.findViewById(R.id.button_information);
         b4.setOnClickListener(this);
 
+        AdRequest adRequest;
+        if(BuildConfig.DEBUG) {
+            String androidId = android.provider.Settings.Secure.getString(getActivity().getContentResolver(), android.provider.Settings.Secure.ANDROID_ID);
+            String deviceId = Notes.md5(androidId).toUpperCase();
+            adRequest= new AdRequest.Builder().addTestDevice(deviceId).build();
 
-        String androidId = android.provider.Settings.Secure.getString(getActivity().getContentResolver(), android.provider.Settings.Secure.ANDROID_ID);
-        String deviceId = Notes.md5(androidId).toUpperCase();
+        } else {
+            adRequest = new AdRequest.Builder().build();
+        }
+
         mAdView = (AdView)V.findViewById(R.id.adView);
-        AdRequest adRequest = new AdRequest.Builder().addTestDevice(deviceId).build();
         mAdView.loadAd(adRequest);
         SharedPreferences sharedPreferences=getActivity().getSharedPreferences("Settings", Context.MODE_PRIVATE);
         SharedPreferences.Editor settingsEditor=sharedPreferences.edit();

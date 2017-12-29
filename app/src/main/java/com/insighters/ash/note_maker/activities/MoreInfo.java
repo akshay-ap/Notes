@@ -33,9 +33,16 @@ public class MoreInfo extends AppCompatActivity {
 
         mInterstitialAd = new InterstitialAd(this);
         mInterstitialAd.setAdUnitId(getString(R.string.interstitial_ad_unit_id));
-        String androidId = Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID);
-        String deviceId = Notes.md5(androidId).toUpperCase();
-        AdRequest adRequest = new AdRequest.Builder().addTestDevice(deviceId).build();
+        AdRequest adRequest;
+        if (BuildConfig.DEBUG) {
+            String androidId = Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID);
+            String deviceId = Notes.md5(androidId).toUpperCase();
+            adRequest= new AdRequest.Builder().addTestDevice(deviceId).build();
+
+        } else {
+            adRequest = new AdRequest.Builder().build();
+        }
+
         mInterstitialAd.loadAd(adRequest);
         mInterstitialAd.setAdListener(new AdListener() {
             public void onAdLoaded() {
@@ -48,16 +55,24 @@ public class MoreInfo extends AppCompatActivity {
         if (mInterstitialAd.isLoaded()) {
             mInterstitialAd.show();
         }
+        AdRequest adRequest;
+
+        if (BuildConfig.DEBUG) {
+            // do something for a debug build
+            String androidId = Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID);
+            String deviceId = Notes.md5(androidId).toUpperCase();
+            adRequest = new AdRequest.Builder().addTestDevice(deviceId).build();
+
+        } else {
+            adRequest = new AdRequest.Builder().build();
+        }
 
         mAdView = (AdView) findViewById(R.id.adView2);
-        String androidId = Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID);
-        String deviceId = Notes.md5(androidId).toUpperCase();
-        AdRequest adRequest = new AdRequest.Builder().addTestDevice(deviceId).build();
         mAdView.loadAd(adRequest);
 
     }
 
-    private void loadInterstitialAd()
+    /*private void loadInterstitialAd()
     {
 
         mInterstitialAd = new InterstitialAd(this);
@@ -78,7 +93,7 @@ public class MoreInfo extends AppCompatActivity {
                 }
             }
         });
-    }//end of load ad
+    }//end of load ad*/
 
 
     @Override

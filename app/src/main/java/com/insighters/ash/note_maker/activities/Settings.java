@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
+import com.insighters.ash.note_maker.BuildConfig;
 import com.insighters.ash.note_maker.NoteMaker.DBHelper;
 import com.insighters.ash.note_maker.NoteMaker.Notes;
 import com.insighters.ash.note_maker.R;
@@ -38,10 +39,16 @@ public class Settings extends AppCompatActivity {
         context=getApplicationContext();
 
         mAdView = (AdView) findViewById(R.id.adView1);
-        String androidId = android.provider.Settings.Secure.getString(getContentResolver(), android.provider.Settings.Secure.ANDROID_ID);
-        String deviceId = Notes.md5(androidId).toUpperCase();
-        AdRequest adRequest = new AdRequest.Builder().addTestDevice(deviceId).build();
-        mAdView.loadAd(adRequest);
+        AdRequest adRequest;
+        if(BuildConfig.DEBUG) {
+            String androidId = android.provider.Settings.Secure.getString(getContentResolver(), android.provider.Settings.Secure.ANDROID_ID);
+            String deviceId = Notes.md5(androidId).toUpperCase();
+            adRequest = new AdRequest.Builder().addTestDevice(deviceId).build();
+        } else {
+            adRequest = new AdRequest.Builder().build();
+
+        }
+         mAdView.loadAd(adRequest);
 
         if(sharedPreferences.getInt("show_splash_screen",0)==1)
         {
